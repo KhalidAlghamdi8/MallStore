@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="styles.css" />
+
+    </h:head>
+    <h:body>
+
+
+        <ui:composition template="templates/masterLayout.xhtml">
+
+            <ui:define name="content" >
+
+                <div class="grid-container">
+                    <ui:repeat value="#{categoryBean.getAllProductsByCategoryId(param['categoryId'])}" var="product" >
+
+                        <ul class="list">
+                            <li class="list_item">
+                                <div class="list-content">
+                                    
+                                    <h2>#{product.productName}</h2>
+                                   
+                                    <h:panelGrid columns="1">
+
+                                        <h:graphicImage library="images" name="#{product.productImage}"/>
+
+                                        <br>
+
+                                        </br>
+                                        <h:panelGrid columns="2">
+                                           
+                                            <h2><strong>Price :</strong></h2>
+                                                <h:outputFormat value="#{product.productPrice}" style="font: bold; font-size: x-large; " >
+                                                <f:convertNumber type="currency" />
+                                            </h:outputFormat>
+                                                
+                                            
+                                        </h:panelGrid>
+
+                                        <br></br>
+                                        <h:form>
+                                            <h:commandButton value="More info" class="button" action="showProduct">
+                                                <f:param name="productId" value="#{product.productId}" />
+                                                 <f:param name="categoryId" value="#{param['categoryId']}" />
+                                            </h:commandButton>
+
+                                            <h:commandButton class="button" value="Buy" action="#{shoppingCart.addProductToShoppingCart()}" >
+                                                <f:param name="productId" value="#{product.productId}" />
+                                                <f:param name="categoryId" value="#{param['categoryId']}" />
+                                            </h:commandButton>
+
+                                        </h:form>
+                                    </h:panelGrid>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </ui:repeat>
+
+
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

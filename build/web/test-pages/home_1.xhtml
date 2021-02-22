@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head class="btns">
+
+        <h:outputStylesheet library="css" name="styles.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/masterLayout.xhtml">
+            <ui:define name="content" >
+                <h:form>
+                    <div class="grid-container">
+                        <ui:repeat value="#{categoryBean.allCategories}" var="category">
+                            <ul class="list">
+                                <li class="list_item">
+                                    <div class="list-content">                                  
+                                        <h:panelGrid columns="1">
+                                            <h:commandLink action="ListingProducts" >
+                                                <f:param name="categoryId" value="#{category.categoryId}" />
+                                                <h:graphicImage class="home" library="images" name="#{category.categoryImagePath}" />
+                                            </h:commandLink>
+                                            <br></br>
+                                            <h:outputText class="home-text" value="#{category.categoryName}"/>
+                                        </h:panelGrid>
+                                    </div>
+                                </li>
+                            </ul>
+                        </ui:repeat>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

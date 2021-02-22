@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Register</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <div class="Register-page">
+    <div class="form">
+        <h:form class="Register-form">
+            UserId : <h:inputText value="${rigesterBean.userId}"/>
+            UserName : <h:inputText value="${rigesterBean.username}"/>
+            firstName : <h:inputText value="${rigesterBean.firstname}"/>
+            lastName : <h:inputText value="${rigesterBean.lastname}"/>
+            Password : <h:inputText value="${rigesterBean.password}"/>
+            Email Address :  <h:inputText value="${rigesterBean.email}"/>
+            Address : <h:inputText value="${rigesterBean.address}"/>
+            Phone : <h:inputText value="${rigesterBean.phone}"/>
+            
+            
+            <h:commandButton value="create" action="${rigesterBean.addCoustomer()}"/>
+            
+          <p class="message">Already registered? <h:commandLink action="login">Sign In</h:commandLink></p>
+        </h:form>
+
+    </div>
+</div>
+    </h:body>
+</html>
+

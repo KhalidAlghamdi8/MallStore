@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Adding Products </title>
+    </h:head>
+    <h:body>
+         <h:form>
+             <h:panelGrid columns="2">
+                 Product ID:<h:inputText value="#{productsBean.productId}" required="true" requiredMessage="this field is rquired"/>
+                 Product Name:<h:inputText value="#{productsBean.productName}"  required="true" requiredMessage="this field is rquired"/>
+                 Product Price:<h:inputText value="#{productsBean.productPrice}" required="true" requiredMessage="this field is rquired"/>
+                 Product Description:
+                 <h:inputTextarea value="#{productsBean.productDescription}" required="true" requiredMessage="this field is rquired" ></h:inputTextarea>
+                 
+                 Quantity In Stock:
+                 <h:selectOneMenu value="#{productsBean.quantityInStock}" required="true" requiredMessage="this field is rquired"> 
+                     <c:forEach begin="1" end="100" var="i">
+                         <f:selectItem itemLabel="#{i}" itemValue="#{i}" />
+                     </c:forEach>   
+                 </h:selectOneMenu>
+                 Product Color: 
+                  <h:selectOneRadio value = "#{productsBean.productColor}" required="true" requiredMessage="this field is rquired">
+                    <f:selectItem itemValue = "RED" itemLabel = "RED" /> 
+                    <f:selectItem itemValue = "BLUE" itemLabel = "BLUE" /> 
+                    <f:selectItem itemValue = "GREEN" itemLabel = "GREEN" /> 
+                    <f:selectItem itemValue = "BLACK" itemLabel = "BLACK" /> 
+                </h:selectOneRadio>
+                 
+                  Product Weight:<h:inputText value="#{productsBean.productWeight}" required="true" requiredMessage="this field is rquired"/>
+                  Product Image: <h:inputText value="#{productsBean.productImage}" required="true" requiredMessage="this field is rquired"/>
+                  
+                  Choose Category:
+                  <h:selectOneMenu value="#{productsBean.categoryId}" required="true" requiredMessage="this field is rquired"> 
+                      <f:selectItems value="#{categoryBean.allCategories}"  var="category" itemValue="#{category.categoryId}" itemLabel="#{category.categoryName}" />
+                 </h:selectOneMenu>
+             </h:panelGrid>
+             <h:commandButton value="Add" action="#{productsBean.addProduct()}" />
+                 
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>MALL STORE</title>
+        <h:outputStylesheet library="css" name="styles.css" />
+        <link rel="StyleSheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="StyleSheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+        <h:outputScript library="js" name="c8e4d183c2.js" />
+    </h:head>
+    <h:body>
+        <div class="header">
+            <div class="logo">
+                <h:graphicImage library="images" name="lgo.png" />
+            </div>
+            <div class="right-menu">
+                <h:form>
+                    <h:commandLink action="login" class="user">
+                        <i class="fas fa-user"></i>
+                    </h:commandLink>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="ShoppingCart">
+                        <span class="num-cart-product" >#{shoppingCart.allQuantities}</span>
+                        <h:graphicImage library="images" name="cart.png" class="cart" />
+                        <f:param name="productId" value="#{product.productId}" />
+                        <f:param name="categoryId" value="#{param['categoryId']}" />
+                    </h:commandLink>
+                </h:form>
+                <h:form>
+                    <h:inputText id="input" class="search" />
+                </h:form>
+            </div>
+
+        </div>
+    </h:body>
+</html>
+

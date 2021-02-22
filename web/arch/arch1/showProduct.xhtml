@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>show Product</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <c:set var="product" value="#{productsBean.getProductById(param['productId'])}" />
+            
+           <h2>Product Name : <h:outputFormat value="${product.productName}"/></h2>
+           <div>
+               <ul>
+                   <li>  <h:graphicImage library="images" name="${product.productImage}" class="img"/></li>
+                   <li> 
+                       <div>
+                       <h4>Color : <h:outputFormat value="${product.productColor}"/></h4>
+                       <h4>Price : <h:outputFormat value="${product.productPrice}"/></h4>
+                       <h4>Weight : <h:outputFormat value="${product.productWeight}"/></h4>
+                       </div>
+                   </li>
+                  
+               </ul>
+           </div>
+           
+           
+            
+            
+           <div class="desc">
+           <h3>Description : <h:outputFormat value="${showProductBean.productDesc}"/></h3>
+           </div>
+            <h4>quantity In Stock : <h:outputFormat value="${showProductBean.quantity}"/></h4>
+           
+           
+        </h:form>
+    </h:body>
+</html>
+

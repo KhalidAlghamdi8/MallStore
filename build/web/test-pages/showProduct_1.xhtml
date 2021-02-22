@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>show Product</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/masterLayout.xhtml" >
+            <ui:define name="content" >
+                <h:form>
+                    <c:set scope="request" var="product" value="#{productsBean.getProductById(param['productId'])}" />
+
+
+                    <div class="row">
+
+                        <h2><h:outputFormat value="${product.productName}"/> </h2>
+                        <div class="column pro_image">
+                            <h:graphicImage library="images" name="${product.productImage}"/>
+                        </div>
+                        <div class="column middle">
+                            <div class="product_ifo" >
+                            <h4>Description :</h4>
+                            <h:outputFormat value="${product.productDescription}" class="info"/>
+                            <h4>Color :</h4>
+                             <h:outputFormat value="${product.productColor}" class="info" />
+                            <h4>Price :</h4>
+                             <h:outputFormat value="${product.productPrice}" class="info" />
+                            <h4>Weight : </h4>
+                            <h:outputFormat value="${product.productWeight}" class="info" />
+
+                            <h4>Quantity In Stock : </h4>
+                            <h:outputFormat value="${product.quantityInStock}" class="info" />
+                            </div>
+                        </div>
+
+                        <div class="column side2">   
+                            <h:commandButton class="add_product" value="Add to Cart" action="#{shoppingCart.addProductToShoppingCart()}" >
+                                <f:param name="productId" value="#{product.productId}" />
+                            </h:commandButton>
+                        </div>
+                    </div>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
